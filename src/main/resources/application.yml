@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: CloudComputing2023
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  datasource:
+#    dynamic:
+#      primary: hive
+#      strict: false
+#      datasource:
+#        hive:
+#          url: jdbc:hive2://172.31.2.42:10000/default
+#          type: com.alibaba.druid.pool.DruidDataSource
+#          username: winterchen
+#          password: winterchen
+#          driver-class-name: org.apache.hive.jdbc.HiveDriver
+
+    url: jdbc:hive2://172.31.2.42:10000/default
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: hive
+    password:
+    driver-class-name: org.apache.hive.jdbc.HiveDriver
+    druid:
+      initialSize: 1
+      min-idle: 1
+      maxActive: 300
+      maxWait: 10000
+      timeBetweenEvictionRunsMillis: 10000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      filters: stat
+

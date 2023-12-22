@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Dec 20 21:22:25 CST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018c-8764-469c-00000cea53a0 
+on database directory memory:D:\陈嘉瑞的文件夹\同济大学\课程文件、文稿\大三\云计算技术\CloudComputing2023\a0afb29c-968c-4e7a-a7e5-611f82202cb9 with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/lenovo/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Amazon.com Inc.
+java.runtime.version=1.8.0_392-b08
+customer.dir=D:\陈嘉瑞的文件夹\同济大学\课程文件、文稿\大三\云计算技术\CloudComputing2023
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
