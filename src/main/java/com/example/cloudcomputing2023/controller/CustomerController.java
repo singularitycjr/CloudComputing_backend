@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/customer")
+@Tag(name = "顾客数据")
 @Slf4j
-@Tag(name = "用户数据")
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;
@@ -30,6 +30,8 @@ public class CustomerController {
 
         return this.customerService.getAll();
     }
+
+
 
 
 

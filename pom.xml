@@ -15,6 +15,8 @@
 
         <mybatis.version>2.2.2</mybatis.version>
         <mybatis.plus.version>3.5.0</mybatis.plus.version>
+        <hutool.version>5.8.21</hutool.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -115,6 +117,11 @@
             <version>3.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.hive</groupId>

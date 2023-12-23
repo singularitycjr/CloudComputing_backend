@@ -12,17 +12,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements ICustomerService {
 
-
     @Autowired
     private CustomerMapper customerMapper;
 
     @Override
     public ResponseResult getNameById(Long id) {
         Customer customer = this.getOne(
-                Wrappers.<Customer>lambdaQuery().eq(Customer::getId, id)
+                Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerID, id)
         );
 
-        return ResponseResult.okResult(customer.getName());
+        return ResponseResult.okResult(customer.getCustomerName());
     }
 
     @Override

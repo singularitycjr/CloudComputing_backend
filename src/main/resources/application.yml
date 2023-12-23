@@ -19,7 +19,7 @@ spring:
 #          password: winterchen
 #          driver-class-name: org.apache.hive.jdbc.HiveDriver
 
-    url: jdbc:hive2://172.31.2.42:10000/default
+    url: jdbc:hive2://172.31.2.42:10000/SaleSystem
     type: com.alibaba.druid.pool.DruidDataSource
     username: hive
     password:
@@ -39,3 +39,6 @@ spring:
       maxOpenPreparedStatements: 20
       filters: stat
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
