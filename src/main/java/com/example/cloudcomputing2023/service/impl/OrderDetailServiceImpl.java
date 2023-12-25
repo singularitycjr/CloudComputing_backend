@@ -81,6 +81,14 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
             statisticsQuery.setEndTime(java.sql.Date.valueOf("2023-12-25"));
         }
 
+        List<Product> productList=productService.list(
+                Wrappers.<Product>lambdaQuery()
+        );
+        List<Orders> ordersList=ordersService.list(
+                Wrappers.<Orders>lambdaQuery()
+        );
+
+
 //        if(statisticsQuery.getStartTime()==null){
 //            statisticsQuery.setStartTime(java.sql.Date.valueOf(LocalDate.MAX));
 //        }
@@ -107,9 +115,16 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
             OrderDetail orderDetail = orderDetailList.get(i);
 
             if(StrUtil.isNotBlank(statisticsQuery.getProductName())){
-                Product product=productService.getOne(
-                        Wrappers.<Product>lambdaQuery().eq(Product::getProductId, orderDetail.getProductId())
-                );
+//                Product product=productService.getOne(
+//                        Wrappers.<Product>lambdaQuery().eq(Product::getProductId, orderDetail.getProductId())
+//                );
+                Product product = null;
+                for (Product p : productList) {
+                    if (p.getProductId().equals(orderDetail.getProductId())) {
+                        product = p;
+                        break;
+                    }
+                }
                 if(!product.getProductName().contains(statisticsQuery.getProductName())){
                     orderDetailList.remove(orderDetail);
                     i--;
@@ -117,9 +132,16 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
                 }
             }
 
-            Orders orders=ordersService.getOne(
-                    Wrappers.<Orders>lambdaQuery().eq(Orders::getOrderId, orderDetail.getOrderId())
-            );
+//            Orders orders=ordersService.getOne(
+//                    Wrappers.<Orders>lambdaQuery().eq(Orders::getOrderId, orderDetail.getOrderId())
+//            );
+            Orders orders = null;
+            for (Orders o : ordersList) {
+                if (o.getOrderId().equals(orderDetail.getOrderId())) {
+                    orders = o;
+                    break;
+                }
+            }
             if(orders.getOrderDate().compareTo(statisticsQuery.getStartTime())<0 || orders.getOrderDate().compareTo(statisticsQuery.getEndTime())>0){
                 orderDetailList.remove(orderDetail);
                 i--;
@@ -185,9 +207,16 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
         List<StatisticsDTO> statisticsDTOList = new ArrayList<>(result.values());
 
         for (StatisticsDTO statisticsDTO : statisticsDTOList) {
-            Product product = productService.getOne(
-                    Wrappers.<Product>lambdaQuery().eq(Product::getProductId, statisticsDTO.getProductId())
-            );
+//            Product product = productService.getOne(
+//                    Wrappers.<Product>lambdaQuery().eq(Product::getProductId, statisticsDTO.getProductId())
+//            );
+            Product product = null;
+            for (Product p : productList) {
+                if (p.getProductId().equals(statisticsDTO.getProductId())) {
+                    product = p;
+                    break;
+                }
+            }
             statisticsDTO.setProductName(product.getProductName());
         }
 

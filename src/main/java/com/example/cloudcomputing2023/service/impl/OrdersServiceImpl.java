@@ -50,6 +50,13 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         if(ordersQuery.getEndTime()==null){
             ordersQuery.setEndTime(java.sql.Date.valueOf("2023-12-25"));
         }
+
+        List<Customer> customerList=customerService.list(
+                Wrappers.<Customer>lambdaQuery()
+        );
+        List<Payment> paymentList=paymentService.list(
+                Wrappers.<Payment>lambdaQuery()
+        );
 //
 ////        MPJLambdaWrapper<Orders> wrapper = new MPJLambdaWrapper<Orders>()
 ////                .selectAll(Orders.class)
@@ -84,9 +91,16 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
             for(int i=0;i<ordersList.size();i++){
                 Orders orders=ordersList.get(i);
 
-                Customer customer=customerService.getOne(
-                        Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerId, orders.getCustomerId())
-                );
+//                Customer customer=customerService.getOne(
+//                        Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerId, orders.getCustomerId())
+//                );
+                Customer customer = null;
+                for (Customer c : customerList) {
+                    if (c.getCustomerId().equals(orders.getCustomerId())) {
+                        customer = c;
+                        break;
+                    }
+                }
                 if(!customer.getCustomerName().contains(ordersQuery.getCustomerName())) {
                     ordersList.remove(i);
                     i--;
@@ -97,12 +111,26 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         List<OrderDTO> orderDTOList=new ArrayList<>();
 
         for (Orders orders : ordersList) {
-            Customer customer=customerService.getOne(
-                    Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerId, orders.getCustomerId())
-            );
-            Payment payment=paymentService.getOne(
-                    Wrappers.<Payment>lambdaQuery().eq(Payment::getOrderId, orders.getOrderId())
-            );
+//            Customer customer=customerService.getOne(
+//                    Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerId, orders.getCustomerId())
+//            );
+            Customer customer = null;
+            for (Customer c : customerList) {
+                if (c.getCustomerId().equals(orders.getCustomerId())) {
+                    customer = c;
+                    break;
+                }
+            }
+//            Payment payment=paymentService.getOne(
+//                    Wrappers.<Payment>lambdaQuery().eq(Payment::getOrderId, orders.getOrderId())
+//            );
+            Payment payment = null;
+            for (Payment p : paymentList) {
+                if (p.getOrderId().equals(orders.getOrderId())) {
+                    payment = p;
+                    break;
+                }
+            }
 
             OrderDTO orderDTO = new OrderDTO();
             orderDTO.setOrderId(orders.getOrderId());
