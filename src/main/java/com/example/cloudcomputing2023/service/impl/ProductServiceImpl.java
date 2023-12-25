@@ -25,6 +25,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         Integer pageNo = productQuery.getPageNo();
         Integer pageSize = productQuery.getPageSize();
 
+        if(pageNo==null)
+            pageNo=1;
+        if(pageSize==null)
+            pageSize=10;
+
         if(productQuery.getPriceLowerBound()==null){
             productQuery.setPriceLowerBound(new BigDecimal(0));
         }

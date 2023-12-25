@@ -44,6 +44,14 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         Integer pageNo = ordersQuery.getPageNo();
         Integer pageSize = ordersQuery.getPageSize();
 
+        if(pageNo==null)
+            pageNo=1;
+        if(pageSize==null)
+            pageSize=10;
+
+        System.out.println(ordersQuery.getStartTime());
+        System.out.println(ordersQuery.getEndTime());
+
         if(ordersQuery.getStartTime()==null){
             ordersQuery.setStartTime(java.sql.Date.valueOf("2000-01-01"));
         }

@@ -73,6 +73,11 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
         Integer pageNo = statisticsQuery.getPageNo();
         Integer pageSize = statisticsQuery.getPageSize();
 
+        if(pageNo==null)
+            pageNo=1;
+        if(pageSize==null)
+            pageSize=10;
+
 
         if (statisticsQuery.getStartTime() == null) {
             statisticsQuery.setStartTime(java.sql.Date.valueOf("2000-01-01"));

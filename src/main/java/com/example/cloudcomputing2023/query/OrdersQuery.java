@@ -9,9 +9,9 @@ import java.sql.Date;
 
 @Data
 public class OrdersQuery extends  PageQuery {
-    public OrdersQuery(){
-        super();
-    }
+    // public OrdersQuery(){
+    //     super();
+    // }
     private Integer orderId;
     private Integer customerId;
     private String customerName;

@@ -26,6 +26,8 @@ public class OrderController {
     @GetMapping("/get")
     @Operation(summary = "获取订单信息")
     public ResponseResult get(OrdersQuery ordersQuery ) {
+        System.out.println("页数");
+        System.out.println(ordersQuery.getPageNo());
         return this.ordersService.get(ordersQuery);
     }
 

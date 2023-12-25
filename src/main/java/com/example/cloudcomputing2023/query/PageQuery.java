@@ -8,15 +8,15 @@ public class PageQuery {
     private Integer pageSize;
 
 
-    public PageQuery() {
-        this(1, 10);
-    }
-
-    public PageQuery(Integer pageNo, Integer pageSize) {
-        this.pageNo = pageNo;
-        this.pageSize = pageSize;
-
-
-    }
+    // public PageQuery() {
+    //     this(1, 10);
+    // }
+    //
+    // public PageQuery(Integer pageNo, Integer pageSize) {
+    //     this.pageNo = pageNo;
+    //     this.pageSize = pageSize;
+    //
+    //
+    // }
 }
 

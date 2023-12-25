@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 @Data
 public class ProductQuery extends PageQuery{
-    public ProductQuery() {
-        super();
-    }
+    // public ProductQuery() {
+    //     super();
+    // }
     private String productName;
     private Integer productId;
     private BigDecimal priceLowerBound;
