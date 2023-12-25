@@ -18,7 +18,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     @Override
     public ResponseResult getNameById(Long id) {
         Customer customer = this.getOne(
-                Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerID, id)
+                Wrappers.<Customer>lambdaQuery().eq(Customer::getCustomerId, id)
         );
 
         return ResponseResult.okResult(customer.getCustomerName());

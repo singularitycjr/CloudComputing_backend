@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/product")
-@Tag(name = "商品数据")
 @Slf4j
+@Tag(name = "商品数据")
 public class ProductController {
 
     @Autowired
@@ -27,7 +27,6 @@ public class ProductController {
     @GetMapping("/get")
     @Operation(summary = "获取商品信息")
     public ResponseResult get(ProductQuery productQuery ) {
-
         return this.productService.get(productQuery);
     }
 

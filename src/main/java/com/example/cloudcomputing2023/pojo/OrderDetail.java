@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 @Data
 @TableName("orderDetail")
 public class OrderDetail {
-    @TableId(value = "orderDetailID", type = IdType.AUTO)
-    private Integer orderDetailID;
+    @TableId(value = "orderDetailId", type = IdType.AUTO)
+    private Integer orderDetailId;
 
     private Integer orderId;
 

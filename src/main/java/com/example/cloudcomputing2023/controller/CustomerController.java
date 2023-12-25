@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
-@Tag(name = "顾客数据")
 @Slf4j
+@Tag(name = "customer-controller", description = "用户信息")
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;

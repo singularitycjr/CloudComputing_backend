@@ -25,8 +25,8 @@ spring:
     password:
     driver-class-name: org.apache.hive.jdbc.HiveDriver
     druid:
-      initialSize: 1
-      min-idle: 1
+      initialSize: 5
+      min-idle: 5
       maxActive: 300
       maxWait: 10000
       timeBetweenEvictionRunsMillis: 10000

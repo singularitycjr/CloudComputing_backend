@@ -48,6 +48,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         if(!ret){
             return ResponseResult.errorResult(400,"分页查询错误");
         }
+
         return ResponseResult.okResult(page);
     }
 

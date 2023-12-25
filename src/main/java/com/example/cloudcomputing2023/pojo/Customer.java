@@ -10,8 +10,8 @@ import lombok.Data;
 @TableName("customer")
 public class Customer {
 
-    @TableId(value = "customerID", type = IdType.AUTO)
-    private Integer customerID;
+    @TableId(value = "customerId", type = IdType.AUTO)
+    private Integer customerId;
 
     private String customerName;
 
